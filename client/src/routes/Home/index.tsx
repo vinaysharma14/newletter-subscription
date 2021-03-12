@@ -2,7 +2,7 @@ import { FC, useCallback } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { useMessage } from 'hooks';
-import { Text, Input } from 'components';
+import { Text, Input, Button } from 'components';
 
 import './styles.css';
 
@@ -25,6 +25,7 @@ export const Home: FC = () => {
           <form onSubmit={handleSubmit(submitHandler)}>
             <Input ref={register({ required: true })} name="email" placeholder={useMessage('emailPlaceholder')} />
             {errors.email && <Text type="p" error text="emailBlankError" />}
+            <Button type="submit" text="subscribe" onSubmit={handleSubmit(submitHandler)} />
           </form>
         </div>
       </div>

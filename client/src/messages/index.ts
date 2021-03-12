@@ -1,4 +1,5 @@
 export const MESSAGES = {
+  subscribe: 'Subscribe',
   emailBlankError: 'Email cannot be blank',
   emailPlaceholder: 'Enter your email here',
   subToNewsletter: 'Subscribe to our Newsletter',
