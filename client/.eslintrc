@@ -1,0 +1,31 @@
+{
+  "plugins": ["react-hooks"],
+  "parser": "@typescript-eslint/parser",
+  "env": { "es6": true, "browser": true },
+  "parserOptions": { "project": "./tsconfig.json" },
+  "extends": ["airbnb-typescript", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "react/prop-types": "off",
+    "no-multi-spaces": "error",
+    "quotes": ["error", "single"],
+    "newline-before-return": "error",
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "lines-between-class-members": "error",
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["state"] }],
+    "@typescript-eslint/type-annotation-spacing": ["error", { "before": false, "after": true }],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
+    ]
+  }
+}
