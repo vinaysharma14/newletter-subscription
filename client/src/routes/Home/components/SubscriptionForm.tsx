@@ -29,7 +29,7 @@ export const SubscriptionForm: FC = () => {
   );
 
   return (
-    <div className="p-7 bg-background shadow-custom rounded sm:p-10">
+    <>
       <Text type="h1" text="subToNewsletter" />
       <Text type="p" text="stayUptoDate" />
 
@@ -57,6 +57,6 @@ export const SubscriptionForm: FC = () => {
           {subscriptionError && <Text error type="p" text={subscriptionError} />}
         </form>
       </div>
-    </div>
+    </>
   );
 };
