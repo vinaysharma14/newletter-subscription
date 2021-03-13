@@ -1,6 +1,7 @@
 import { FC, useMemo, useCallback } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+import { pattern } from 'utils';
 import { useMessage } from 'hooks';
 import { MessageKey } from 'messages';
 import { Text, Input, Button } from 'components';
@@ -19,12 +20,18 @@ export const Home: FC = () => {
   const emailErr = useMemo((): MessageKey | undefined => {
     if (errors.email) {
       switch (errors.email.type) {
+        case 'maxLength':
+          return 'emailMaxLenErr';
+
+        case 'minLength':
+          return 'emailMinLenErr';
+
         case 'pattern':
-          return 'invalidEmailEntered';
+          return 'emailPatternErr';
 
         case 'required':
         default:
-          return 'emailBlankError';
+          return 'emailRequiredErr';
       }
     }
 
@@ -42,7 +49,12 @@ export const Home: FC = () => {
             <Input
               name="email"
               placeholder={useMessage('emailPlaceholder')}
-              ref={register({ required: true, pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ })}
+              ref={register({
+                pattern,
+                minLength: 10,
+                maxLength: 30,
+                required: true,
+              })}
             />
 
             {emailErr && <Text type="p" error text={emailErr} />}
@@ -54,3 +66,8 @@ export const Home: FC = () => {
     </div>
   );
 };
+
+// TODO:
+// mock API integration
+// API success component
+// API error handling with retry
