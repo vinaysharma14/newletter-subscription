@@ -10,4 +10,3 @@ export const Home: FC = () => (
 
 // TODO:
 // API success component
-// API error handling with retry

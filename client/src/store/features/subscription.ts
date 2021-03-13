@@ -7,6 +7,7 @@ import { MessageKey } from 'messages';
 interface SubscriptionState {
   subscribing: boolean
   subscriptionSuccess: boolean
+  submitButtonLabel: MessageKey
   subscriptionError: MessageKey | ''
 }
 
@@ -14,6 +15,7 @@ const initialState: SubscriptionState = {
   subscribing: false,
   subscriptionError: '',
   subscriptionSuccess: false,
+  submitButtonLabel: 'subscribe',
 };
 
 const subscriptionSlice = createSlice({
@@ -24,6 +26,7 @@ const subscriptionSlice = createSlice({
       state.subscribing = true;
       state.subscriptionError = '';
       state.subscriptionSuccess = false;
+      state.submitButtonLabel = 'subscribing';
     },
     subscriptionSuccess: (state: SubscriptionState) => {
       state.subscribing = false;
@@ -31,6 +34,7 @@ const subscriptionSlice = createSlice({
     },
     subscriptionFailed: (state: SubscriptionState) => {
       state.subscribing = false;
+      state.submitButtonLabel = 'tryAgain';
       state.subscriptionError = 'facingTechnicalIssues';
     },
   },

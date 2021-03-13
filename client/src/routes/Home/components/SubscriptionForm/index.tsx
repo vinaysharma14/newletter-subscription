@@ -20,6 +20,7 @@ export const SubscriptionForm: FC = () => {
   const {
     subscribing,
     subscriptionError,
+    submitButtonLabel,
   } = useSelector(({ subscriptionReducer }: RootState) => subscriptionReducer);
 
   const submitHandler: SubmitHandler<FormValues> = useCallback(
@@ -49,8 +50,8 @@ export const SubscriptionForm: FC = () => {
           <Button
             type="submit"
             disabled={subscribing}
+            text={submitButtonLabel}
             onSubmit={handleSubmit(submitHandler)}
-            text={subscribing ? 'subscribing' : 'subscribe'}
           />
 
           {subscriptionError && <Text error type="p" text={subscriptionError} />}

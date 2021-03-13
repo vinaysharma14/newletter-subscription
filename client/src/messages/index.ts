@@ -1,4 +1,5 @@
 export const MESSAGES = {
+  tryAgain: 'Try again',
   subscribe: 'Subscribe',
   subscribing: 'Subscribing',
   emailMaxLenErr: 'Email too long',
