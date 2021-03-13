@@ -1,15 +1,17 @@
-import express from 'express';
-import { getConfig } from './config';
+import { getEnvConfig, configureServer } from './config';
 
-const app = express();
-const port = 3000;
+const startServer = () => {
+  const envConfig = getEnvConfig();
 
-getConfig();
+  if (envConfig) {
+    const { EXPRESS_PORT } = envConfig;
 
-app.get('/', (_, res) => {
-  res.send('Hello World!');
-});
+    const server = configureServer();
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+    server.listen(EXPRESS_PORT, () => {
+      console.log(`Server started at http://localhost:${EXPRESS_PORT}`);
+    });
+  }
+};
+
+startServer();

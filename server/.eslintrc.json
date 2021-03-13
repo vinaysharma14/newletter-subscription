@@ -7,7 +7,7 @@
     "indent": ["error", 2],
     "key-spacing": ["error"],
     "no-unused-vars": "error",
-    "no-multi-spaces":"error",
+    "no-multi-spaces": "error",
     "space-infix-ops": "warn",
     "no-trailing-spaces": "error",
     "newline-before-return": "error",

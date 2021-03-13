@@ -8,7 +8,7 @@ type Config = {
   MONGO_HOST: string;
   MONGO_PORT: string;
   EXPRESS_PORT: string;
-}
+};
 
 // schema for env vars validation
 const envVarsSchema = joi.object({
@@ -18,7 +18,7 @@ const envVarsSchema = joi.object({
   EXPRESS_PORT: joi.number().default(3050),
 });
 
-export const getConfig = (): Config | undefined => {
+export const getEnvConfig = (): Config | undefined => {
   try {
     const { error, value } = envVarsSchema.validate({
       MONGO_DB: process.env.MONGO_DB,
