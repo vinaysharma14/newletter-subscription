@@ -1,12 +1,36 @@
-import { forwardRef, HTMLProps } from 'react';
+import { forwardRef, HTMLProps, useMemo } from 'react';
+import { LiteralUnion, RegisterOptions } from 'react-hook-form';
 
-type Props = HTMLProps<HTMLInputElement>;
+import { ERRORS, ErrorKey } from 'errors';
 
-export const Input = forwardRef<HTMLInputElement, Props>(({ name, placeholder }, ref) => (
-  <input
-    ref={ref}
-    name={name}
-    placeholder={placeholder}
-    className="p-2 w-full rounded border border-primary text-primary bg-background focus:ring ring-purple-300 focus:outline-none transition-shadow"
-  />
-));
+type IProps = HTMLProps<HTMLInputElement>;
+
+interface Props {
+  error?: LiteralUnion<keyof RegisterOptions, string>
+}
+
+export const Input = forwardRef<HTMLInputElement, Props & IProps>((
+  { name, placeholder, error },
+  ref,
+) => {
+  const err = useMemo((): ErrorKey | undefined => {
+    if (error && name) {
+      return ERRORS[name][error];
+    }
+
+    return undefined;
+  }, [name, error]);
+
+  return (
+    <>
+      <input
+        ref={ref}
+        name={name}
+        placeholder={placeholder}
+        className="p-2 w-full rounded border border-primary text-primary bg-background focus:ring ring-purple-300 focus:outline-none transition-shadow"
+      />
+
+      {err && <p className="text-sm text-red-600 mt-2">{err}</p>}
+    </>
+  );
+});
