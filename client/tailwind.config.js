@@ -13,4 +13,12 @@ module.exports = {
       },
     },
   },
+  variants: {
+    // by default, the disabled variant is
+    // not enabled for any core plugins
+    extend: {
+      cursor: ['disabled'],
+      opacity: ['disabled'],
+    }
+  },
 };

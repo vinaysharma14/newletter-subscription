@@ -1,9 +1,13 @@
 import { FC, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { pattern } from 'utils';
 import { useMessage } from 'hooks';
 import { Text, Input, Button } from 'components';
+
+import { RootState } from 'store';
+import { subscribeToNewsletter } from 'store/features';
 
 import './styles.css';
 
@@ -12,9 +16,18 @@ type FormValues = {
 };
 
 export const Home: FC = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm<FormValues>();
 
-  const submitHandler: SubmitHandler<FormValues> = useCallback(() => {}, []);
+  const {
+    subscribing,
+    subscriptionError,
+  } = useSelector(({ subscriptionReducer }: RootState) => subscriptionReducer);
+
+  const submitHandler: SubmitHandler<FormValues> = useCallback(
+    () => dispatch(subscribeToNewsletter()),
+    [dispatch],
+  );
 
   return (
     <div className="h-screen flex fle\x-col flex-1 justify-center items-center p-8">
@@ -36,7 +49,14 @@ export const Home: FC = () => {
               })}
             />
 
-            <Button type="submit" text="subscribe" onSubmit={handleSubmit(submitHandler)} />
+            <Button
+              type="submit"
+              disabled={subscribing}
+              onSubmit={handleSubmit(submitHandler)}
+              text={subscribing ? 'subscribing' : 'subscribe'}
+            />
+
+            {subscriptionError && <Text error type="p" text={subscriptionError} />}
           </form>
         </div>
       </div>
