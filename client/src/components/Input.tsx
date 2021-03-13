@@ -27,7 +27,7 @@ export const Input = forwardRef<HTMLInputElement, Props & IProps>((
         ref={ref}
         name={name}
         placeholder={placeholder}
-        className="p-2 w-full rounded border border-primary text-primary bg-background focus:ring ring-purple-300 focus:outline-none transition-shadow"
+        className="p-2 text-sm w-full rounded border border-primary text-primary bg-background focus:ring ring-purple-300 focus:outline-none transition-shadow"
       />
 
       {err && <p className="text-sm text-red-600 mt-2">{err}</p>}

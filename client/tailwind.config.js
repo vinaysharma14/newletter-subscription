@@ -17,8 +17,32 @@ module.exports = {
     // by default, the disabled variant is
     // not enabled for any core plugins
     extend: {
-      cursor: ['disabled'],
-      opacity: ['disabled'],
-    }
+      cursor: ["disabled"],
+      opacity: ["disabled"],
+    },
   },
+  plugins: [
+    ({ theme, addUtilities }) => {
+      const themeColors = theme("colors");
+      const colorKeys = Object.keys(themeColors);
+
+      const individualBorderColors = colorKeys.map((colorName) => ({
+        [`.border-b-${colorName}`]: {
+          borderBottomColor: themeColors[colorName],
+        },
+        [`.border-t-${colorName}`]: {
+          borderTopColor: themeColors[colorName],
+        },
+        [`.border-l-${colorName}`]: {
+          borderLeftColor: themeColors[colorName],
+        },
+        [`.border-r-${colorName}`]: {
+          borderRightColor: themeColors[colorName],
+        },
+      }));
+
+      // custom plugin for individiual border colors
+      addUtilities(individualBorderColors);
+    },
+  ],
 };

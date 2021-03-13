@@ -49,6 +49,7 @@ export const SubscriptionForm: FC = () => {
 
           <Button
             type="submit"
+            loading={subscribing}
             disabled={subscribing}
             text={submitButtonLabel}
             onSubmit={handleSubmit(submitHandler)}
