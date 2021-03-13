@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 type Config = {
-  MONGO_DB: string;
+  DB: string;
   MONGO_HOST: string;
   MONGO_PORT: string;
   EXPRESS_PORT: string;
@@ -12,7 +12,7 @@ type Config = {
 
 // schema for env vars validation
 const envVarsSchema = joi.object({
-  MONGO_DB: joi.string().required(),
+  DB: joi.string().required(),
   MONGO_HOST: joi.string().required(),
   MONGO_PORT: joi.number().required(),
   EXPRESS_PORT: joi.number().default(3050),
@@ -21,7 +21,7 @@ const envVarsSchema = joi.object({
 export const getEnvConfig = (): Config | undefined => {
   try {
     const { error, value } = envVarsSchema.validate({
-      MONGO_DB: process.env.MONGO_DB,
+      DB: process.env.DB,
       MONGO_HOST: process.env.MONGO_HOST,
       MONGO_PORT: process.env.MONGO_PORT,
       EXPRESS_PORT: process.env.EXPRESS_PORT,

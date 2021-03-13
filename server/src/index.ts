@@ -1,16 +1,18 @@
-import { getEnvConfig, configureServer } from './config';
+import { getEnvConfig, configureServer, configureDb } from './config';
 
-const startServer = () => {
+const startServer = async () => {
   const envConfig = getEnvConfig();
 
   if (envConfig) {
-    const { EXPRESS_PORT } = envConfig;
+    const {
+      DB,
+      MONGO_HOST,
+      MONGO_PORT,
+      EXPRESS_PORT,
+    } = envConfig;
 
-    const server = configureServer();
-
-    server.listen(EXPRESS_PORT, () => {
-      console.log(`Server started at http://localhost:${EXPRESS_PORT}`);
-    });
+    await configureDb(DB, MONGO_HOST, MONGO_PORT);
+    configureServer(EXPRESS_PORT);
   }
 };
 
