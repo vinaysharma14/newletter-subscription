@@ -1,2 +1,5 @@
-// all the named exports of services would be present here
-export { };
+const subscribe = (): Promise<void> => new Promise((resolve) => {
+  setTimeout(resolve, 2000);
+});
+
+export { subscribe };

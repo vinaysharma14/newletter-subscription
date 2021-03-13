@@ -1,2 +1,6 @@
 // all the named exports of components would be present here
-export { };
+
+export * from './Text';
+export * from './Input';
+export * from './Button';
+export * from './Spinner';
