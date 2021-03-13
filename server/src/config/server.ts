@@ -1,5 +1,6 @@
 import helmet from 'helmet';
 import express from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 import router from '../router';
 
@@ -17,7 +18,7 @@ export const configureServer = (port: string) => {
 
   // handle invalid api endpoints
   app.use((_, res) => {
-    res.status(404).send(JSON.stringify('API not found'));
+    res.status(StatusCodes.NOT_FOUND).send(JSON.stringify('API not found'));
   });
 
   // start the server

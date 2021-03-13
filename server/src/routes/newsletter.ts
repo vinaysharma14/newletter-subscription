@@ -1,3 +1,4 @@
+import { StatusCodes } from 'http-status-codes';
 import { Router, Request, Response } from 'express';
 
 import { subscribe } from '../controllers';
@@ -10,7 +11,7 @@ router.post('/subscribe', subscribeParamsValidation(), validator, async (req: Re
 });
 
 router.get('/subscription-list', async (_, res) => {
-  res.status(200).send('list of all subscriptions');
+  res.status(StatusCodes.OK).send('list of all subscriptions');
 });
 
 export const newsletterRoutes = router;
