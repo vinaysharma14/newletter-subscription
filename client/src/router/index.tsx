@@ -6,12 +6,13 @@ import {
   BrowserRouter,
 } from 'react-router-dom';
 
-import { Home } from '../routes';
+import { Home, Subscribers } from '../routes';
 
 export const Router: FC = () => (
   <BrowserRouter>
     <Switch>
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/subscribers" component={Subscribers} />
     </Switch>
   </BrowserRouter>
 );
