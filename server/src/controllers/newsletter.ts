@@ -31,14 +31,14 @@ const subscribe = async (req: Request, res: Response) => {
   return res.status(StatusCodes.OK).json({ success: 'email subscribed successfully' });
 };
 
-const getSubscriptionsList = async (res: Response) => {
+const getSubscribers = async (res: Response) => {
   try {
-    const subscriptionsList = await subscriptions.find();
+    const subscribers = await subscriptions.find();
 
-    return res.status(StatusCodes.OK).json({ subscriptionsList });
+    return res.status(StatusCodes.OK).json({ subscribers });
   } catch ({ message }) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: message });
   }
 };
 
-export { subscribe, getSubscriptionsList };
+export { subscribe, getSubscribers };
