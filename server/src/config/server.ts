@@ -1,3 +1,4 @@
+import cors from 'cors';
 import helmet from 'helmet';
 import express from 'express';
 import { StatusCodes } from 'http-status-codes';
@@ -6,6 +7,9 @@ import router from '../router';
 
 export const configureServer = (port: string) => {
   const app = express();
+
+  // enable cors
+  app.use(cors());
 
   // secures app by setting various HTTP headers
   app.use(helmet());
