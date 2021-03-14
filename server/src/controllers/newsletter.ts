@@ -10,7 +10,22 @@ const subscribe = async (req: Request, res: Response) => {
     const subscription = new subscriptions({ email });
     await subscription.save();
   } catch ({ code, message }) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ code, message });
+    let error;
+    let statusCode;
+
+    switch (code) {
+      case 11000:
+        statusCode = StatusCodes.CONFLICT;
+        error = 'email already subscribed';
+        break;
+
+      default:
+        error = message;
+        statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
+        break;
+    }
+
+    return res.status(statusCode).json({ error });
   }
 
   res.sendStatus(StatusCodes.OK);
