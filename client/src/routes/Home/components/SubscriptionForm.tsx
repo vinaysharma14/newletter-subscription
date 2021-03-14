@@ -24,7 +24,7 @@ export const SubscriptionForm: FC = () => {
   } = useSelector(({ subscriptionReducer }: RootState) => subscriptionReducer);
 
   const submitHandler: SubmitHandler<FormValues> = useCallback(
-    () => dispatch(subscribeToNewsletter()),
+    ({ email }) => dispatch(subscribeToNewsletter(email)),
     [dispatch],
   );
 

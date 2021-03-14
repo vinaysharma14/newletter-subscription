@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { AppThunk } from 'store';
-import { subscribe } from 'services';
 import { MessageKey } from 'messages';
+import { subscribe } from 'services/newsletter';
 
 interface SubscriptionState {
   subscribing: boolean
@@ -32,10 +32,10 @@ const subscriptionSlice = createSlice({
       state.subscribing = false;
       state.subscriptionSuccess = true;
     },
-    subscriptionFailed: (state: SubscriptionState) => {
+    subscriptionFailed: (state: SubscriptionState, { payload }: PayloadAction<MessageKey>) => {
       state.subscribing = false;
+      state.subscriptionError = payload;
       state.submitButtonLabel = 'tryAgain';
-      state.subscriptionError = 'facingTechnicalIssues';
     },
   },
 });
@@ -43,14 +43,14 @@ const subscriptionSlice = createSlice({
 export const subscriptionReducer = subscriptionSlice.reducer;
 const { subscriptionRequest, subscriptionSuccess, subscriptionFailed } = subscriptionSlice.actions;
 
-const subscribeToNewsletter = (): AppThunk => async (dispatch) => {
+const subscribeToNewsletter = (email: string): AppThunk => async (dispatch) => {
   dispatch(subscriptionRequest());
 
   try {
-    await subscribe();
+    await subscribe(email);
     dispatch(subscriptionSuccess());
-  } catch (error) {
-    dispatch(subscriptionFailed());
+  } catch ({ message }) {
+    dispatch(subscriptionFailed(message));
   }
 };
 
