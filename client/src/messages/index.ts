@@ -10,6 +10,7 @@ export const MESSAGES = {
   emailPlaceholder: 'Enter your email here',
   subToNewsletter: 'Subscribe to our newsletter',
   stayUptoDate: 'Stay upto date with our latest new and products.',
+  emailAlreadySubscribed: 'Email address has been already subscribed.',
   subscribedSuccessfully: 'You have been successfully subscribed to our newsletter.',
   facingTechnicalIssues: 'We are facing some technical issues at the moment. Please try again later.',
 } as const;
