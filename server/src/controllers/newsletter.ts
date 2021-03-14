@@ -28,7 +28,7 @@ const subscribe = async (req: Request, res: Response) => {
     return res.status(statusCode).json({ error });
   }
 
-  res.sendStatus(StatusCodes.OK);
+  return res.status(StatusCodes.OK).json({ success: 'email subscribed successfully' });
 };
 
 export { subscribe };
