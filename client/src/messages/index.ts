@@ -11,6 +11,7 @@ export const MESSAGES = {
   emailRequiredErr: 'Email cannot be blank',
   emailPlaceholder: 'Enter your email here',
   subToNewsletter: 'Subscribe to our newsletter',
+  noSubscribers: 'Looks like no one has subscribed yet :(',
   stayUptoDate: 'Stay upto date with our latest new and products.',
   emailAlreadySubscribed: 'Email address has been already subscribed.',
   listOfSubscribers: 'List of users who have subscribed to your newsletter.',
