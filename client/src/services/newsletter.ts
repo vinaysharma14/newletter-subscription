@@ -19,4 +19,8 @@ const subscribe = async (email: string): Promise<Response['json']> => {
   }
 };
 
-export { subscribe };
+const fetchSubscribers = (): Promise<void> => new Promise((resolve) => {
+  setTimeout(resolve, 2000);
+});
+
+export { subscribe, fetchSubscribers };

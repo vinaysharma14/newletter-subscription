@@ -1,4 +1,5 @@
 export const MESSAGES = {
+  loading: 'Loading',
   tryAgain: 'Try again',
   subscribe: 'Subscribe',
   subscribing: 'Subscribing',

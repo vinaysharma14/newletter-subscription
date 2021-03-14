@@ -4,12 +4,18 @@ import { useMessage } from 'hooks';
 import { MessageKey } from 'messages';
 
 interface Props {
+  mt?: number,
   error?: boolean
   type: 'p' | 'h1'
   text: MessageKey
 }
 
-export const Text: FC<Props> = ({ type, text, error = false }) => {
+export const Text: FC<Props> = ({
+  type,
+  text,
+  mt = 0,
+  error = false,
+}) => {
   const message = useMessage(text);
 
   switch (type) {
@@ -18,6 +24,6 @@ export const Text: FC<Props> = ({ type, text, error = false }) => {
 
     case 'p':
     default:
-      return <p className={`text-sm ${error ? 'text-red-600 mt-2' : ''}`}>{message}</p>;
+      return <p className={`text-sm ${error ? 'text-red-600 mt-2' : ''} mt-${mt}`}>{message}</p>;
   }
 };
