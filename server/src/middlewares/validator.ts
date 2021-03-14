@@ -6,7 +6,7 @@ const validator = (req: Request, res: Response, next: NextFunction) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    return res.status(StatusCodes.BAD_REQUEST).json({ errors: errors.mapped() });
+    return res.status(StatusCodes.BAD_REQUEST).json({ error: errors.mapped() });
   }
 
   next();
