@@ -1,14 +1,13 @@
 import { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import { RootState } from 'store';
 import { fetchSubscribersList } from 'store/features';
 
-import { Spinner, Text } from 'components';
+import { Text } from 'components';
+import { Loader } from './components';
 
 export const Subscribers: FC = () => {
   const dispatch = useDispatch();
-  const { fetching } = useSelector(({ subscribersReducer }: RootState) => subscribersReducer);
 
   useEffect(() => {
     dispatch(fetchSubscribersList());
@@ -20,12 +19,7 @@ export const Subscribers: FC = () => {
         <Text type="h1" text="subscribers" />
         <Text type="p" text="listOfSubscribers" />
 
-        {fetching && (
-        <div className="mt-7 flex flex-col justify-center items-center">
-          <Spinner size="md" invert />
-          <Text type="p" text="loading" mt={2} />
-        </div>
-        )}
+        <Loader />
 
         {/* <div className="mt-7 m-5 max-h-80 overflow-scroll">
           {[...Array(100).keys()].map((key) => (
