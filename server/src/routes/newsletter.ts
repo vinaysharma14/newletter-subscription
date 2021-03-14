@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 
-import { subscribe, getSubscriptionsList } from '../controllers';
+import { subscribe, getSubscribers } from '../controllers';
 import { validator, subscribeParamsValidation } from '../middlewares';
 
 const router = Router();
@@ -9,8 +9,8 @@ router.post('/subscribe', subscribeParamsValidation(), validator, async (req: Re
   await subscribe(req, res);
 });
 
-router.get('/subscription-list', async (_, res) => {
-  await getSubscriptionsList(res);
+router.get('/get-subscribers', async (_, res) => {
+  await getSubscribers(res);
 });
 
 export const newsletterRoutes = router;
