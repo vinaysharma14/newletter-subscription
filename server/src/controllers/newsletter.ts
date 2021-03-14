@@ -7,6 +7,10 @@ const subscribe = async (req: Request, res: Response) => {
   const { email } = req.body;
 
   try {
+    // wait for mongo for index creation else
+    // unique constraint would fail silently
+    await subscriptions.init();
+
     const subscription = new subscriptions({ email });
     await subscription.save();
   } catch ({ code, message }) {
