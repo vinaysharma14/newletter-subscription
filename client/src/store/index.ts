@@ -2,12 +2,11 @@ import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit';
 
 import { createLogger } from 'redux-logger';
 
-import {
-  subscriptionReducer,
-} from './features';
+import { subscribersReducer, subscriptionReducer } from './features';
 
 export const store = configureStore({
   reducer: {
+    subscribersReducer,
     subscriptionReducer,
   },
   middleware: (getDefaultMiddleware) => [
