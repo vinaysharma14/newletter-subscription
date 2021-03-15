@@ -1,12 +1,14 @@
 import { FC, useMemo } from 'react';
 
+import { Text } from 'components';
+
 interface Props {
   email: string;
-  topBorder: boolean;
+  firstItem: boolean;
   subscribedAt: string;
 }
 
-export const Item: FC<Props> = ({ email, topBorder, subscribedAt }) => {
+export const Item: FC<Props> = ({ email, firstItem, subscribedAt }) => {
   const {
     time,
     date,
@@ -24,11 +26,14 @@ export const Item: FC<Props> = ({ email, topBorder, subscribedAt }) => {
   }, [subscribedAt]);
 
   return (
-    <div className={`py-3 border-b border-primary ${topBorder ? 'border-t' : ''}`}>
-      <p className="text-sm">{`Email: ${email}`}</p>
+    <div className={`p-3 shadow-custom bg-background rounded ${firstItem ? '' : 'mt-5'}`}>
+      <Text type="p" styling="bold" text="email" />
+      <Text type="p" styling="italic">{email}</Text>
       <br />
-      <p className="text-sm">{`Subscribed Date: ${date}/${month}/${year}`}</p>
-      <p className="text-sm">{`Subscription Time: ${time}`}</p>
+
+      <Text type="p" styling="bold" text="subscriptionDetails" />
+      <Text type="p" text="date" size="xs">{`${date}/${month}/${year}`}</Text>
+      <Text type="p" text="time" size="xs">{time}</Text>
     </div>
   );
 };

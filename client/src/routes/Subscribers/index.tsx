@@ -30,14 +30,14 @@ export const Subscribers: FC = () => {
         <Loader />
 
         {!fetching && (
-        <div className="mt-7 m-5 max-h-80 overflow-scroll">
+        <div className="p-1 mt-7 max-h-80 overflow-scroll">
           {fetchError && <Text center type="p" error text={fetchError} />}
 
           {subscribers.length ? subscribers.map(({ email, subscribedAt }, index) => (
             <Item
               key={email}
               email={email}
-              topBorder={index === 0}
+              firstItem={index === 0}
               subscribedAt={subscribedAt}
             />
           )) : null}
