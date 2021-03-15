@@ -1,3 +1,4 @@
+import { Subscriber } from 'store/features';
 import { call } from './index';
 
 const subscribe = async (email: string): Promise<Response['json']> => {
@@ -19,8 +20,20 @@ const subscribe = async (email: string): Promise<Response['json']> => {
   }
 };
 
-const fetchSubscribers = (): Promise<void> => new Promise((resolve) => {
-  setTimeout(resolve, 2000);
-});
+const fetchSubscribers = async (): Promise<Subscriber[]> => {
+  try {
+    const { subscribers } = await call('GET', 'newsletter/get-subscribers', undefined) as unknown as { subscribers: Subscriber[] };
+
+    return subscribers;
+  } catch ({ message }) {
+    switch (message.split(': ')[1]) {
+      case '500':
+      case '404':
+      case 'Failed to fetch':
+      default:
+        throw new Error('facingTechnicalIssues');
+    }
+  }
+};
 
 export { subscribe, fetchSubscribers };

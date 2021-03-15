@@ -4,10 +4,15 @@ import { AppThunk } from 'store';
 import { MessageKey } from 'messages';
 import { fetchSubscribers } from 'services/newsletter';
 
+export interface Subscriber {
+  email: string;
+  subscribedAt: string;
+}
+
 interface SubscribersState {
-  subscribers: [],
   fetching: boolean,
-  fetchError: MessageKey | ''
+  subscribers: Subscriber[],
+  fetchError: MessageKey | '',
 }
 
 const initialState: SubscribersState = {
@@ -25,9 +30,12 @@ const subscribersSlice = createSlice({
       state.subscribers = [];
       state.fetchError = '';
     },
-    fetchSubscribersSuccess: (state: SubscribersState) => {
+    fetchSubscribersSuccess: (
+      state: SubscribersState,
+      { payload }: PayloadAction<Subscriber[]>,
+    ) => {
       state.fetching = false;
-      state.subscribers = [];
+      state.subscribers = payload;
     },
     fetchSubscribersFailed: (state: SubscribersState, { payload }: PayloadAction<MessageKey>) => {
       state.fetching = false;
@@ -48,8 +56,13 @@ const fetchSubscribersList = (): AppThunk => async (dispatch) => {
   dispatch(fetchSubscribersRequest());
 
   try {
-    await fetchSubscribers();
-    dispatch(fetchSubscribersSuccess());
+    const subscribers = await fetchSubscribers();
+
+    if (subscribers.length === 0) {
+      throw new Error('noSubscribers');
+    }
+
+    dispatch(fetchSubscribersSuccess(subscribers));
   } catch ({ message }) {
     dispatch(fetchSubscribersFailed(message));
   }

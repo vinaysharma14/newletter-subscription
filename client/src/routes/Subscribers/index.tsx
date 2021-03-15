@@ -33,12 +33,12 @@ export const Subscribers: FC = () => {
         <div className="mt-7 m-5 max-h-80 overflow-scroll">
           {fetchError && <Text center type="p" error text={fetchError} />}
 
-          {subscribers.length ? subscribers.map((key) => (
+          {subscribers.length ? subscribers.map(({ email, subscribedAt }, index) => (
             <Item
-              key={key}
-              email="foo@bar.com"
-              subscribedAt="12:00"
-              topBorder={key === 0}
+              key={email}
+              email={email}
+              topBorder={index === 0}
+              subscribedAt={subscribedAt}
             />
           )) : null}
         </div>
