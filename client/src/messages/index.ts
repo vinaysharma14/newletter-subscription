@@ -10,6 +10,7 @@ export const MESSAGES = {
   emailPatternErr: 'Invalid email entered',
   emailRequiredErr: 'Email cannot be blank',
   emailPlaceholder: 'Enter your email here',
+  viewAllSubscribers: 'View all subscribers',
   subToNewsletter: 'Subscribe to our newsletter',
   noSubscribers: 'Looks like no one has subscribed yet :(',
   stayUptoDate: 'Stay upto date with our latest new and products.',
