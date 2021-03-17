@@ -27,10 +27,9 @@ export const Subscribers: FC = () => {
         <Text center type="h1" text="subscribers" />
         <Text center type="p" text="listOfSubscribers" />
 
-        <Loader />
-
-        {!fetching && (
         <div className="p-1 mt-7 max-h-80 overflow-scroll">
+          {fetching && <Loader />}
+
           {fetchError && <Text center type="p" error text={fetchError} />}
 
           {subscribers.length ? subscribers.map(({ email, subscribedAt }, index) => (
@@ -42,7 +41,6 @@ export const Subscribers: FC = () => {
             />
           )) : null}
         </div>
-        )}
       </div>
     </div>
   );
