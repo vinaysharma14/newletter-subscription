@@ -5,11 +5,16 @@ export const call = async (method: Method, endpoint: string, body: Body): Promis
   const baseUrl = process.env.REACT_APP_SERVER_BASEURL;
 
   try {
-    const response = await fetch(`${baseUrl}/${endpoint}`, {
-      body,
-      method,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    const [response] = await Promise.all([
+      fetch(`${baseUrl}/${endpoint}`, {
+        body,
+        method,
+        headers: { 'Content-Type': 'application/json' },
+      }),
+      // prevent flashing of spinners by
+      // displaying them for at least 500ms
+      new Promise((resolve) => setTimeout(resolve, 500)),
+    ]);
 
     if (response.status > 200) {
       throw new Error(`${response.status}`);
