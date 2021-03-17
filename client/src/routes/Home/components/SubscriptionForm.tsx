@@ -2,7 +2,7 @@ import { FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { pattern } from 'utils';
+import { emailRegex } from 'utils';
 import { useMessage } from 'hooks';
 import { Text, Input, Button } from 'components';
 
@@ -40,10 +40,10 @@ export const SubscriptionForm: FC = () => {
             error={errors.email?.type}
             placeholder={useMessage('emailPlaceholder')}
             ref={register({
-              pattern,
               minLength: 10,
               maxLength: 30,
               required: true,
+              pattern: emailRegex,
             })}
           />
 

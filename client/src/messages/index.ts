@@ -1,4 +1,7 @@
 export const MESSAGES = {
+  date: 'Date: ',
+  time: 'Time: ',
+  email: 'Email:',
   loading: 'Loading',
   tryAgain: 'Try again',
   subscribe: 'Subscribe',
@@ -11,6 +14,7 @@ export const MESSAGES = {
   emailRequiredErr: 'Email cannot be blank',
   emailPlaceholder: 'Enter your email here',
   viewAllSubscribers: 'View all subscribers',
+  subscriptionDetails: 'Subscription Details:',
   subToNewsletter: 'Subscribe to our newsletter',
   noSubscribers: 'Looks like no one has subscribed yet :(',
   stayUptoDate: 'Stay upto date with our latest new and products.',
