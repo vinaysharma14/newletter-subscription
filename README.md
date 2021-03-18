@@ -1,7 +1,7 @@
 <h1 align="center">Newsletter Subscription :newspaper_roll:</h1>
 
 <p align="center">
-A Full Stack Web App demonstrating a form which allows users to subscribe to newsletter via their email and view list of all subscribers. The subscriptions get recorded in a database and accessible via a RESTFul JSON API.
+A <b>Full Stack Web App</b> demonstrating a form which allows users to <i>subscribe to newsletter</i> via their email and <i>view list of all subscribers</i>. The subscriptions get recorded in a database and accessible via a <b>RESTFul JSON API</b>.
 </p>
 
 ![demo-gif](assets/demo.gif)
@@ -10,25 +10,29 @@ A Full Stack Web App demonstrating a form which allows users to subscribe to new
 
 ### Front End
 
-- Language: TypeScript
-- Technology: React JS
-- UI Framework: Tailwind CSS
-- State Management: Redux
-- Form Library: React Hooks Form
-- Linter: ESLint
-- Formatted: Prettier
+| Specification |   Description    |
+| :-----------: | :--------------: |
+|   Language    |    TypeScript    |
+|  Technology   |     React JS     |
+|      UI       |   Tailwind CSS   |
+|     State     |      Redux       |
+|     Form      | React Hooks Form |
+|    Linter     |      ESLint      |
+|   Formatted   |     Prettier     |
 
 ### Back End
 
-- Language: TypeScript
-- Technology: Express JS
-- ENV Vars Validator: JOI
-- Security Module: Helmet
-- Request Params Validator: Express Validator
-- Database: MongoDB
-- ODM Library: Mongoose
-- Linter: ESLint
-- Formatted: Prettier
+|      Specification       |    Description    |
+| :----------------------: | :---------------: |
+|         Language         |    TypeScript     |
+|        Technology        |    Express JS     |
+|    ENV Vars Validator    |        JOI        |
+|     Security Module      |      Helmet       |
+| Request Params Validator | Express Validator |
+|         Database         |      MongoDB      |
+|       ODM Library        |     Mongoose      |
+|          Linter          |      ESLint       |
+|        Formatted         |     Prettier      |
 
 ## Steps to run :rocket:
 
