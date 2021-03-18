@@ -8,7 +8,7 @@ A <b>Full Stack Web App</b> demonstrating a form which allows users to <i>subscr
 
 ## Tech Stack Used :hammer_and_wrench:
 
-### Front End
+### Front End:
 
 | Specification |   Description    |
 | :-----------: | :--------------: |
@@ -20,7 +20,7 @@ A <b>Full Stack Web App</b> demonstrating a form which allows users to <i>subscr
 |    Linter     |      ESLint      |
 |   Formatted   |     Prettier     |
 
-### Back End
+### Back End:
 
 |      Specification       |    Description    |
 | :----------------------: | :---------------: |
@@ -35,6 +35,8 @@ A <b>Full Stack Web App</b> demonstrating a form which allows users to <i>subscr
 |        Formatted         |     Prettier      |
 
 ## Steps to run :rocket:
+
+**Note:** You'll need to configure **_env vars_** explicitly as per example env files in both client and server.
 
 ```bash
   # clone the repository
