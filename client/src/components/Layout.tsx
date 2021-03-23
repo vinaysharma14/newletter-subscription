@@ -2,6 +2,7 @@ import {
   FC,
   useMemo,
   ReactNode,
+  useEffect,
   useCallback,
 } from 'react';
 
@@ -9,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState } from 'store';
 import { MessageKey, MESSAGES } from 'messages';
-import { toggleTheme } from 'store/features/ui/theme';
+import { rehydrateTheme, toggleTheme } from 'store/features/ui/theme';
 
 interface Props {
   children: ReactNode;
@@ -18,6 +19,10 @@ interface Props {
 export const Layout: FC<Props> = ({ children }) => {
   const dispatch = useDispatch();
   const { isDarkMode } = useSelector(({ themeReducer }: RootState) => themeReducer);
+
+  useEffect(() => {
+    dispatch(rehydrateTheme());
+  }, [dispatch]);
 
   const clickHander = useCallback(() => {
     dispatch(toggleTheme());
