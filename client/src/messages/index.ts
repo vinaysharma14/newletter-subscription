@@ -1,4 +1,5 @@
 export const MESSAGES = {
+  age: 'Age',
   date: 'Date: ',
   time: 'Time: ',
   email: 'Email:',
@@ -9,6 +10,7 @@ export const MESSAGES = {
   subscribers: 'Subscribers',
   emailMaxLenErr: 'Email too long',
   emailMinLenErr: 'Email too short',
+  agePlaceholder: 'Enter your age here',
   thankYou: 'Thank you for subscribing!',
   emailPatternErr: 'Invalid email entered',
   emailRequiredErr: 'Email cannot be blank',

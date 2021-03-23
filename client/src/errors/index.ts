@@ -5,6 +5,12 @@ export const ERRORS: Record<string, Record<string, string>> = {
     pattern: 'Invalid email entered',
     required: 'Email cannot be blank',
   },
+  age: {
+    maxLength: 'Age too long',
+    minLength: 'Age too short',
+    pattern: 'Invalid age entered',
+    required: 'Age cannot be blank',
+  },
 };
 
 export type ErrorKey = keyof typeof ERRORS;

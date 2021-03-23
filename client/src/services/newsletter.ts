@@ -1,9 +1,10 @@
+import { FormValues } from 'routes/Home/components';
 import { Subscriber } from 'store/features';
 import { call } from './index';
 
-const subscribe = async (email: string): Promise<Response['json']> => {
+const subscribe = async (formValues: FormValues): Promise<Response['json']> => {
   try {
-    const successJson = await call('POST', 'newsletter/subscribe', JSON.stringify({ email }));
+    const successJson = await call('POST', 'newsletter/subscribe', JSON.stringify(formValues));
 
     return successJson;
   } catch ({ message }) {

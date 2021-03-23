@@ -9,7 +9,8 @@ import { Text, Input, Button } from 'components';
 import { RootState } from 'store';
 import { subscribeToNewsletter } from 'store/features';
 
-type FormValues = {
+export type FormValues = {
+  age: string,
   email: string,
 };
 
@@ -24,7 +25,7 @@ export const SubscriptionForm: FC = () => {
   } = useSelector(({ subscriptionReducer }: RootState) => subscriptionReducer);
 
   const submitHandler: SubmitHandler<FormValues> = useCallback(
-    ({ email }) => dispatch(subscribeToNewsletter(email)),
+    (values) => dispatch(subscribeToNewsletter(values)),
     [dispatch],
   );
 
@@ -44,6 +45,17 @@ export const SubscriptionForm: FC = () => {
               maxLength: 30,
               required: true,
               pattern: emailRegex,
+            })}
+          />
+
+          <Input
+            name="age"
+            error={errors.age?.type}
+            placeholder={useMessage('agePlaceholder')}
+            ref={register({
+              minLength: 2,
+              maxLength: 2,
+              required: true,
             })}
           />
 

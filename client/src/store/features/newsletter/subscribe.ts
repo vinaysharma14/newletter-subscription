@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk } from 'store';
 import { MessageKey } from 'messages';
 import { subscribe } from 'services/newsletter';
+import { FormValues } from 'routes/Home/components';
 
 interface SubscriptionState {
   subscribing: boolean
@@ -43,11 +44,11 @@ const subscriptionSlice = createSlice({
 export const subscriptionReducer = subscriptionSlice.reducer;
 const { subscriptionRequest, subscriptionSuccess, subscriptionFailed } = subscriptionSlice.actions;
 
-const subscribeToNewsletter = (email: string): AppThunk => async (dispatch) => {
+const subscribeToNewsletter = (formValues: FormValues): AppThunk => async (dispatch) => {
   dispatch(subscriptionRequest());
 
   try {
-    await subscribe(email);
+    await subscribe(formValues);
     dispatch(subscriptionSuccess());
   } catch ({ message }) {
     dispatch(subscriptionFailed(message));
