@@ -32,8 +32,9 @@ export const Subscribers: FC = () => {
 
           {fetchError && <Text center type="p" error text={fetchError} />}
 
-          {subscribers.length ? subscribers.map(({ email, subscribedAt }, index) => (
+          {subscribers.length ? subscribers.map(({ age, email, subscribedAt }, index) => (
             <Item
+              age={age}
               key={email}
               email={email}
               firstItem={index === 0}

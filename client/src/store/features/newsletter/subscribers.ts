@@ -5,6 +5,7 @@ import { MessageKey } from 'messages';
 import { fetchSubscribers } from 'services/newsletter';
 
 export interface Subscriber {
+  age: string;
   email: string;
   subscribedAt: string;
 }
