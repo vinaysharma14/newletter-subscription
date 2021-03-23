@@ -8,6 +8,8 @@ export const MESSAGES = {
   subscribe: 'Subscribe',
   subscribing: 'Subscribing',
   subscribers: 'Subscribers',
+  toggleToDark: 'Toggle to dark',
+  toggleToLight: 'Toggle to light',
   emailMaxLenErr: 'Email too long',
   emailMinLenErr: 'Email too short',
   agePlaceholder: 'Enter your age here',

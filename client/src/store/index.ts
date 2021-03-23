@@ -2,10 +2,11 @@ import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit';
 
 import { createLogger } from 'redux-logger';
 
-import { subscribersReducer, subscriptionReducer } from './features';
+import { themeReducer, subscribersReducer, subscriptionReducer } from './features';
 
 export const store = configureStore({
   reducer: {
+    themeReducer,
     subscribersReducer,
     subscriptionReducer,
   },
