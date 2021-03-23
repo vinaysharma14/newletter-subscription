@@ -2,8 +2,8 @@ import { FC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { emailRegex } from 'utils';
 import { useMessage } from 'hooks';
+import { emailRegex, numOnlyRegex } from 'utils';
 import { Text, Input, Button } from 'components';
 
 import { RootState } from 'store';
@@ -56,6 +56,7 @@ export const SubscriptionForm: FC = () => {
               minLength: 2,
               maxLength: 2,
               required: true,
+              pattern: numOnlyRegex,
             })}
           />
 
