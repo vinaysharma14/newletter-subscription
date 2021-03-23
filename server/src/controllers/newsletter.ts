@@ -4,14 +4,14 @@ import { StatusCodes } from 'http-status-codes';
 import { subscriptions } from '../schema';
 
 const subscribe = async (req: Request, res: Response) => {
-  const { email } = req.body;
+  const { email, age } = req.body;
 
   try {
     // wait for mongo for index creation else
     // unique constraint would fail silently
     await subscriptions.init();
 
-    const subscription = new subscriptions({ email });
+    const subscription = new subscriptions({ email, age });
     await subscription.save();
   } catch ({ code, message }) {
     let error;
